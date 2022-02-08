@@ -7,7 +7,7 @@ import './App.css';
 const App = () => {
   const [courseGoals, setCourseGoals] = useState([
     { text: 'Do all exercises!', id: 'g1' },
-    { text: 'Finish the course!', id: 'g2' }
+    { text: 'Finish the course!', id: 'g2' },
   ]);
 
   const addGoalHandler = enteredText => {
@@ -25,14 +25,10 @@ const App = () => {
     });
   };
 
-  let content = (
-    <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
-  );
+  let content = <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>;
 
   if (courseGoals.length > 0) {
-    content = (
-      <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
-    );
+    content = <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />;
   }
 
   return (
@@ -40,16 +36,7 @@ const App = () => {
       <section id="goal-form">
         <CourseInput onAddGoal={addGoalHandler} />
       </section>
-      <section id="goals">
-        {content}
-        {/* {courseGoals.length > 0 && (
-          <CourseGoalList
-            items={courseGoals}
-            onDeleteItem={deleteItemHandler}
-          />
-        ) // <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
-        } */}
-      </section>
+      <section id="goals">{content}</section>
     </div>
   );
 };
